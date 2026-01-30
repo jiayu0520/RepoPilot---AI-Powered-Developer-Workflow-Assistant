@@ -1,41 +1,47 @@
 {
-  "project_summary": {
-    "description": "RepoPilot is an AI-powered developer workflow assistant designed to streamline project analysis and documentation.",
-    "modules": [
-      {
-        "name": "Scanner",
-        "description": "Recursively scans the project directory to analyze its structure and file types."
-      },
-      {
-        "name": "Analyzer",
-        "description": "Analyzes the scanned files to count occurrences of various file types."
-      },
-      {
-        "name": "Summarizer",
-        "description": "Generates a project summary based on the analysis, simulating AI insights."
-      },
-      {
-        "name": "Report Generator",
-        "description": "Creates a JSON report of the analysis results and project summary."
-      }
+  "target": "C:\\Users\\User\\Desktop\\MYPROJECT\\RepoPilot\\demo_project",
+  "scan": {
+    "root": "C:\\Users\\User\\Desktop\\MYPROJECT\\RepoPilot\\demo_project",
+    "dir_count": 2,
+    "file_count": 2,
+    "tree": "demo_project/\n├── src/\n│   └── app.py\n└── package.json"
+  },
+  "analysis": {
+    "total_files": 2,
+    "file_types": {
+      ".json": 1,
+      ".py": 1
+    },
+    "top_types": [
+      [
+        ".json",
+        1
+      ],
+      [
+        ".py",
+        1
+      ]
     ]
   },
-  "file_analysis": {
-    "total_files": 50,
+  "ai_summary": {
+    "project_name": "demo_project",
+    "description": "「demo_project」推測是一個 Python 工具/應用 專案。主要檔案類型：.json(1), .py(1)。",
+    "modules": [
+      "核心程式模組：Python 原始碼（可能含 CLI / service / scripts）",
+      "設定/資料模組：JSON 設定或資料"
+    ],
     "file_types": {
-      ".py": 20,
-      ".js": 10,
-      ".md": 5,
-      ".json": 3,
-      ".html": 2
-    }
+      ".json": 1,
+      ".py": 1
+    },
+    "notes": [
+      "此為 Mock AI 分析（規則推論），可替換成真實 AI API。",
+      "建議保留 Summarizer 的輸出 schema，以方便 report/README 自動化。"
+    ]
   },
-  "usage_instructions": {
-    "installation": "To install RepoPilot, clone the repository and run `pip install -r requirements.txt`.",
-    "usage": "Run the CLI tool using `python main.py scan <target_directory>` to analyze a project."
-  },
-  "demo": {
-    "example_command": "python main.py scan ./example_project",
-    "expected_output": "A detailed analysis report will be generated in data/report.json."
+  "meta": {
+    "tool": "RepoPilot",
+    "version": "0.1.0",
+    "generated_at": "2026-01-30T14:24:43"
   }
 }

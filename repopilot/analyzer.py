@@ -1,41 +1,37 @@
-def analyze_directory_structure(directory):
-    import os
-    from collections import Counter
+from __future__ import annotations
 
-    file_types = Counter()
-
-    for root, dirs, files in os.walk(directory):
-        for file in files:
-            ext = os.path.splitext(file)[1]
-            if ext in ['.py', '.js', '.md', '.json', '.html']:
-                file_types[ext] += 1
-
-    return file_types
+from collections import Counter
+from dataclasses import dataclass
+from pathlib import Path
 
 
-def generate_summary(file_types):
-    summary = {
-        "total_files": sum(file_types.values()),
-        "file_type_counts": dict(file_types),
-        "project_description": "This project is an AI-powered developer workflow assistant.",
-        "functionality": "The project includes features for scanning directories, analyzing file types, and generating summaries and reports."
-    }
-    return summary
+@dataclass(frozen=True)
+class AnalyzerResult:
+    total_files: int
+    file_types: dict[str, int]
+    top_types: list[tuple[str, int]]
 
 
-def main(directory):
-    file_types = analyze_directory_structure(directory)
-    summary = generate_summary(file_types)
-    return summary
+class FileTypeAnalyzer:
+    """
+    Count file extensions: .py .js .md .json .html ...
+    """
 
+    def analyze(self, files: list[Path]) -> AnalyzerResult:
+        c: Counter[str] = Counter()
 
-if __name__ == "__main__":
-    import sys
+        for p in files:
+            ext = p.suffix.lower().strip()
+            if not ext:
+                ext = "(no_ext)"
+            elif not ext.startswith("."):
+                ext = "." + ext
+            c[ext] += 1
 
-    if len(sys.argv) != 2:
-        print("Usage: python analyzer.py <directory>")
-        sys.exit(1)
+        sorted_items = sorted(c.items(), key=lambda x: (-x[1], x[0]))
+        return AnalyzerResult(
+            total_files=sum(c.values()),
+            file_types=dict(sorted_items),
+            top_types=sorted_items[:10],
+        )
 
-    directory = sys.argv[1]
-    summary = main(directory)
-    print(summary)

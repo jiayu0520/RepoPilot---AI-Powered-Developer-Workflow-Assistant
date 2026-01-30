@@ -1,6 +1,2 @@
-Flask
-click
-jsonschema
-pytest
-pytest-cov
-rich
+# Intentionally minimal dependencies for demo.
+# (No external deps required)

@@ -5,10 +5,15 @@ RepoPilot 是一個 AI 驅動的開發者工作流程輔助工具（CLI Tool）�
 目前 RepoPilot 內建 Mock AI 分析引擎（規則推論），並保留完整 AI API 擴充介面，可無縫升級為真實 LLM（如 OpenAI、Azure OpenAI、Local LLM）整合架構。
 
 ✨ 核心功能（Core Features）
+
 📁 專案目錄結構掃描（Recursive Tree Scan）
+
 📊 檔案類型分析（.py / .js / .md / .json / .html …）
+
 🧠 AI 專案摘要生成（Mock AI，LLM-ready 架構）
+
 🧩 專案模組結構推論（Module Inference）
+
 📝 自動 README 文件生成
 📄 JSON 結構化報告輸出（data/report.json）
 🖥 CLI 操作介面（適合自動化與 CI/CD 整合）
@@ -39,3 +44,4 @@ RepoPilot 將程式碼專案轉換為結構化知識，讓 Repository 不只是�
 CI/CD 工具
 
 SaaS 平台
+

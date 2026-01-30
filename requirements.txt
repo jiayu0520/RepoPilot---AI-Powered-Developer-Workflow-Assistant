@@ -1,0 +1,6 @@
+Flask
+click
+jsonschema
+pytest
+pytest-cov
+rich
